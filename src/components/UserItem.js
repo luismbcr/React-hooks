@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-const UserItem = ({ name, email, link }) => {
+const UserItem = ({ name, email, website }) => {
     return (
         <tr>
             <td>{name}</td>
             <td>{email}</td>
-            <td>{link}</td>
+            <td>{website}</td>
         </tr>
     )
 }
