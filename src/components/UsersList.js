@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import UserItem from './UserItem';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as userActions from '../actions/userActions';
 
-const UsersList = ({users,GET_ALL_USERS}) => {
+const UsersList = () => {
 
+    const users = useSelector(state => state.userReducer.users);
+    const dispatch = useDispatch();
     useEffect(() => {
-        GET_ALL_USERS();
-    }, [GET_ALL_USERS]);
+        dispatch((userActions.GET_ALL_USERS()))
+    }, [dispatch]);
 
     return (
         <table className="container">
@@ -27,8 +29,9 @@ const UsersList = ({users,GET_ALL_USERS}) => {
 }
 
 
-const mapStateToProps = state => ({
-    users: state.userReducer.users
-})
-const mapDispatchToProps = userActions;
-export default connect(mapStateToProps,mapDispatchToProps)(UsersList);
+// const mapStateToProps = state => ({
+//     users: 
+// });
+// const mapDispatchToProps = userActions;
+// export default connect(mapStateToProps,mapDispatchToProps)(UsersList);
+export default UsersList;
